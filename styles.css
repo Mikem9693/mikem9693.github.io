@@ -1,0 +1,11 @@
+:root {
+  --bg: #0F1733;
+  --surface: #18224A;
+  --text: #F2EFE8;
+  --muted: #A9AFC7;
+  --heading: #FFB27A;
+  --accent: #ee863c;
+  h1, h2, h3 {
+  color: var(--heading);
+}
+}
