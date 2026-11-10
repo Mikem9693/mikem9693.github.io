@@ -1,11 +1,80 @@
 :root {
-  --bg: #0F1733;
-  --surface: #18224A;
-  --text: #F2EFE8;
-  --muted: #A9AFC7;
+  --bg: #0B1B3F;
+  --surface: #1A2C5B;
+  --text: #FFFFFF;
+  --muted: #B8C2DD;
   --heading: #FFB27A;
-  --accent: #ee863c;
-  h1, h2, h3 {
+  --accent: #FF4FA3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2rem 1rem;
+  font-family: "Space Grotesk", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+main, footer {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
   color: var(--heading);
 }
+
+h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+a {
+  color: var(--accent);
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.tile {
+  background: var(--surface);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.tile h1,
+.tile h2 {
+  margin-top: 0;
+}
+
+.label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.tile-intro    { grid-column: span 3; }
+.tile-featured { grid-column: span 2; grid-row: span 2; }
+.tile-built    { grid-column: span 2; }
+.tile-toolkit  { grid-column: span 3; }
+
+@media (max-width: 700px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+  .tile {
+    grid-column: auto;
+    grid-row: auto;
+  }
 }
