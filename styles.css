@@ -101,3 +101,12 @@ a {
 .highlights dd {
   margin: 0 0 0.75rem;
 }
+.article-page h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem;
+}
+
+.article-page ul {
+  padding-left: 1.25rem;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Records automation | Mike Morris</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page">
+  <header>
+    <a href="../index.html">← Back to home</a>
+  </header>
+
+  <main>
+    <article>
+      <p class="label">Project</p>
+      <h1>Records automation</h1>
+
+      <section>
+        <h2>The challenge</h2>
+        <p>Applying to many roles at once meant a lot of records to keep. After each application I filled in the tracker by hand: the date, company, job title, match score and a link to the tailored CV. As the stages moved on, I kept each status up to date. This was repetitive and easy to forget, and roles that had gone quiet stayed marked as live. If the records are unreliable, you can’t tell what’s working: which sources, which CV versions, or where applications stall.</p>
+      </section>
+
+      <section>
+        <h2>My role</h2>
+        <p>I owned the whole thing as a personal project. Before building anything, I mapped my manual process step by step and chose to automate only the part that didn’t need my judgement, which was filling in the tracker. Writing the CVs stayed with me. I defined the rules, tested each version against real applications and decided how to handle edge cases. I used Claude (AI) to write and refine the Apps Script code.</p>
+      </section>
+
+      <section>
+        <h2>What I built</h2>
+        <p><b>A Google Sheets tracker with three automated layers:</b></p>
+  <dl class="highlights">
+<dt>Automatic logging (CV sync script):</dt> 
+<dd>Every 15 minutes, a script checks my CVs folder in Google Drive. For each new CV, it adds a tracker row with the date, the company (read from the file name), the job title and the AI match score (read from hidden properties inside the Word file), plus a link to the CV. It also marks whether a cover letter exists by checking a separate folder.</dd>
+<dt>AI as the data source:</dt> 
+<dd>When Claude rates a role and tailors my CV, it saves the job title and match score inside the file’s properties. That means the data arrives with the CV, and I don’t have to type it.</dd>
+<dt>Self-maintaining status (upkeep scripts):</dt>
+<dd> One script sets each application to Waiting, Ongoing or Closed based on the sift result, without overwriting anything I closed by hand. Another marks applications as unsuccessful after two weeks with no response, so the live pipeline stays accurate.</dd>
+<dt>Reporting:</dt>
+<dd> A totals tab calculates sift pass rate, hit rate, applications by source and interview conversion by CV version. This feeds a Looker Studio dashboard.</dd>
+  </dl>     
+</section>
+
+      <section>
+        <h2>Outcome</h2>
+        <ul>
+        <li>Manual row entry replaced: a new application shows up in the tracker within 15 minutes of saving the CV.</li>
+        <li>No duplicate rows. Editing or re-uploading a CV doesn’t create a new entry, while a genuine repeat application to the same company does.</li>
+        <li>An active pipeline that clears itself of roles that have gone quiet.</li>
+        <li>A version of the tracker template published on GitHub after a data-protection review.</li>
+        <li>383 applications tracked in 2026</li>
+            </ul>
+      </section>
+      </section>
+
+      <section>
+        <h2>What I learned</h2>
+          <dl class="highlights">
+<dt>Map the process before automating it:</dt>
+<dd>Listing my real steps showed that only one part needed automating. That kept the build small and quick.</dd>
+<dt>Real use exposes the edge cases:</dt>
+<dd>Applying to a comapny a second time showed the duplicate check was too strict. I changed it so a CV added more than seven days after an earlier one counts as a new application.</dd>
+<dt>Check where data ends up:</dt>
+<dd>I first considered storing the match score in the CV’s Title, but that could have appeared in the PDF a recruiter opens. I moved it to a custom property and exported a PDF to confirm nothing leaked.</dd>
+<dt>Test before going live:</dt> 
+<dd>A preview mode showed what the script would change before it changed anything.</dd>
+<dt>Naming conventions are a contract:</dt> 
+<dd>The automation depends on exact file names, tab names and column headers. Renaming a tab in the published template broke the script, which taught me to document every dependency.</dd>
+<dt>Never allow AI to overwrite a human decision</dt>
+<dd>Anything I set manually remains untouched.</dd>
+</dl>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>Find me on <a href="https://github.com/Mikem9693">GitHub</a></p>
+  </footer>
+</body>
+</html>
