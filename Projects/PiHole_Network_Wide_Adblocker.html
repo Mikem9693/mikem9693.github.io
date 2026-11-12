@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PiHole Network Wide Adblocker| Mike Morris</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page">
+  <header>
+    <a href="../index.html">← Back to home</a>
+  </header>
+
+  <main>
+    <article>
+      <p class="label">Project</p>
+      <h1>Network Wide Adblocker</h1>
+
+      <section>
+        <h2>The challenge</h2>
+<p>Ads, trackers and background telemetry were reaching every device in my home. Browser extensions only protect the one browser they’re installed in. I wanted a single filtering layer for phones, laptops, a gaming PC and everything else, without installing software on each device.</p>
+
+    </section>
+
+      <section>
+        <h2>My role</h2>
+<p>Sole designer, builder and administrator. I chose the hardware (a Raspberry Pi 4B), installed and configured Pi-hole, set up the router, and handled the troubleshooting, updates and monitoring.</p>
+
+      </section>
+
+      <section>
+        <h2>What I built</h2>
+       
+<p><b>A DNS-level filtering service on a Raspberry Pi that sits in front of every device on my home network, with extra layers around it to cover what DNS alone can’t.</b></p>
+  <aside class ="callout">
+     <p> Adverts are becoming more and more frequent even on paid platforms. This project was a great opportunity to impliment a fix whilst developing a new skill</p>
+  </aside>
+        <dl class="highlights">
+<dt>Host:</dt> 
+<dd>A Raspberry Pi 4B on a wired connection, with a reserved address on the router so the rest of the network can always find it.</dd>
+<dt>Install:</dt> 
+<dd>Installed Pi-hole, chose Cloudflare as the upstream resolver and added the OISD blocklist, taking the lists to around 300,000 domains. When the first install left the blocklist database missing, I rebuilt it from the command line.</dd>
+<dt>Score:</dt>
+<dd> Pointed the router’s DHCP settings at the Pi so every device uses it automatically. I kept Cloudflare as a fallback, so the network still works if the Pi is switched off.</dd>
+<dt>Route:</dt>
+<dd> Roles with a match below 60% were logged and skipped so they were never processed again. Roles at 60% or above moved on.</dd>
+<dt>Layer:</dt>
+<dd>Added uBlock Origin Lite in the browsers to handle page-level ads that DNS can’t see. This also addressed structural issues of page layouts pulling blank space where adverts previously existed</dd>
+<dt>Close the gaps:</dt>
+<dd>Worked through the ways devices were quietly bypassing Pi-hole, including encrypted DNS in Chrome and Edge and Apple’s Private Relay.</dd>
+<dt>Monitor</dt>
+<dd>Used the dashboard and query log to check each device, spot noisy apps and tell real blocking from one app retrying in a loop. I also kept the system and Pi-hole updated and enabled SSH for remote administration.</dd>
+</dl>  
+</section>
+
+<img src="C:\Users\mikem\OneDrive\Pictures\Screenshots">
+
+<aside class="callout">  
+<p>implementing DNS level ad blocking worked well but website were still showing where adverts previously existed so the user experience was less than perfect</p>
+</aside> 
+
+      <section>
+        <h2>Outcome</h2>
+    <dl class="highlights">
+    <dt>Concept proven:</dt>
+    <dd>A working Pi-hole serving around six devices, with a reserved IP address, an expanded blocklist, SSH access for remote administration and up-to-date software.</dd>    
+    <dt>Design validated:</dt>
+    <dd>Tracker and telemetry traffic blocked across phones, laptops and apps, not just in browsers.</dd>
+    <dt>Skills gained:</dt>
+    <dd>Several bypasses found through the query log and closed, including browser encrypted DNS and a weak ad blocker on one laptop.</dd>
+    <dt>Lasting asset:</dt>
+    <dd>A hardware fault recovered after moving the Pi (an SD card that had come loose).</dd> 
+        </dl>     
+      </section>
+
+    <aside class="callout">
+<p><a href="https://github.com/pi-hole/pi-hole">Find this automation and instructions on the Pi-hole GitHub </a></p></p>
+    </aside>
+
+      <section>
+        <h2>What I learned</h2>
+          <dl class="highlights">
+<dt>DNS filtering is one layer, not a complete answer:</dt>
+<dd>It works best alongside a browser-level blocker, and some ads need neither.</dd>
+<dt>Dashboard headline numbers can mislead:</dt>
+<dd>One app accounted for most of the blocks on some days, comparison with per-device and per-domain data will quickly give you a clear answer.</dd>
+<dt>Most problems were bypasses:</dt>
+<dd>As most things slipping through the net were not blocklist gaps. The first question should always be whether the device is asking Pi-hole at all.</dd>
+<dt>Very quickly, projects are no longer hobbies</dt>
+<dd>As with everything, once people become acustomed to a standard going back is not an option. My partner who questioned the value of this project was the first to ask why she was seeing adverts and I was straight into troubleshooting</dd>
+</dl>
+      </section>
+<aside class="callout">
+<p>A level of compromise is needed especially in a shared home - This meant a small amount of adverts getting through to avoid creating a system that would require manual intervention for any and every issue</p>
+</aside>
+
+
+<section>
+    <h2>Next Steps</h2>
+<dl class="highlights">
+<dt>Moving beyond the home network</dt>
+<dd>The natural next step is to expand beyond the current limitations of being connected to my home network. This would allow me to enjoy the beneifts of adblocking and tracking limitations whereever I find myself</dd>
+<dt>Challenges</dt>   
+<dd>The usual fix of a VPN back into the home network requires an open port on my router.My provider shares one public address between customers, so an open port would never be reachable from outside.</dd>    
+<dd>I currently run a commercial VPN on my phone, its unliekly I would be able to run a second at the same time</dd>
+</dl>
+</section>
+<section>
+<h2>Solutions Considered</h2>
+<dl class="highlights">
+<dt>Taiscales</dt>
+<dd>This would only require outbound connections and therefore need no port forwarding and be feasible with the IPS restrcitions</dd>
+<dt>Requesting a static IP address</dt>
+<dd>This would cost around £5 a month and allow a conventional home VPN to be implemented. WireGuard server on the Pi and a single port forwarded on the router. It is the most direct technical fix, but it adds a monthly cost and an open port that I would need to keep patched. This ties back to creating solution that others in the house would be unlikely to fix in the case of an error</dd>
+<dt>WireGuard relay on a rented Cloud Server</dt>
+<dd>This would avoid my provider's restrictions without paying for a static address, but I would still add a cost and trusting a third party with the connection.</dd>
+</dl>
+
+<p>The only realistic option would be to utilise Taiscales, the other options very much enter the territory of over engineering and would reault in a much more fragile network removing the ease of use which we all expect</p>
+
+</section>
+
+
+    </article>
+  </main>
+
+  <footer>
+    <p>Find me on <a href="https://github.com/Mikem9693">GitHub</a></p>
+  </footer>
+</body>
+</html>

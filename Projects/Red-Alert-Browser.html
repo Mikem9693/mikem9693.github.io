@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Alert in Browser| Mike Morris</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="article-page">
+  <header>
+    <a href="../index.html">← Back to home</a>
+  </header>
+
+  <main>
+    <article>
+      <p class="label">Project</p>
+      <h1>Red Alert in Browser</h1>
+
+      <section>
+        <h2>The challenge</h2>
+<p><i>Command & Conquer: Red Alert</i> is currently available on a browser however this uses DOS emulation running noticably slower, freezing and stuttering on modern machines. The games source code is available under the GPL presening a solution. Complining the oroginal engine for the web. The code written in the early 90s presents a challenge as it assumes it controls the whole machine. Resulting in hanging loops and attemopted interaction with hardware unavailable on web pages</p> 
+    
+     </section>
+
+      <section>
+        <h2>My role</h2>
+<p>I am running this as a Product owner/delivery lead, with an AI coding assistant (Claude Code) as the engineer. I scope the work into tickets with clear acceptance criteria, set the gates each phase must pass, review every change before it’s committed, and decide what’s in or out of scope. Alongside the delivery, I’m learning the technical side hands-on: the Linux toolchain, C++ build systems and WebAssembly.</p> 
+</section>
+
+      <section>
+        <h2>What I am building</h2>
+       
+     <p><b>A browser version of Red Alert built from the open-source Vanilla Conquer engine, compiled to WebAssembly with Emscripten:</b></p>
+  <aside class ="callout">
+     <p>Currently with the release of Fable 5.2 Anthopic are alloing Fable usage as part of a pro subscription with a usage reset availabe before 18th Novmeber 2026 (6 days from starting the project) The aim is to utilise the more powerful Fable model whilst usage is available at no cost </p>
+  </aside>
+  <ul>
+    <li>Skirmish and campaign play in desktop Chrome, Edge and Firefox, from a single link</li>
+    <li>Players load their own legally obtained game files; no copyrighted game data is hosted</li>
+    <li>A clean, documented fork with each change scoped and explained, structured so that improvements could be offered back to the original open-source project</li>
+    <li>Online multiplayer planned as a second phase</li>
+</ul>
+</section>
+
+<aside class="callout">  
+<p>Using a single, capable model for everything worked, but it was expensive. Splitting the work let a cheap model handle the high-volume triage and kept the expensive model for the few roles where the writing had to be good.</p>
+</aside> 
+
+      <section>
+        <h2>Intended Outcome</h2>
+    <ul>
+        <li>A version that runs smoothly where emulation struggles, backed by a recorded side-by-side performance comparison rather than impressions</li>
+<li>Measured delivery data: planned against actual effort per phase, AI usage and cost, and defects caught at review</li>
+<li>A working example of how to direct AI on real engineering work safely: clear briefs, small changes, evidence-based review</li>
+    </ul>
+      </section>
+
+    <aside class="callout">
+<p><a href="https://github.com/Mikem9693/job-search-automation">Find this automation and instructions on my GitHub</a></p></p>
+    </aside>
+
+      <section>
+        <h2>What I'm Learning</h2>
+          <dl class="highlights">
+<dt>Managing AI delivery:</dt>
+<dd>writing tickets an AI can execute well, using plan-first workflows, reviewing diffs instead of trusting output, and matching model and cost to task difficulty</dd>
+<dt>Delivery discipline with AI:</dt>
+<dd>phase gates, change control when an assumption proves wrong, isolating variables when diagnosing problems, regression testing and structuring development to stay within usage limits</dd>
+<dt>Technical foundations:</dt>
+<dd>Linux and WSL, Git workflows, CMake and C++ builds, WebAssembly and the browser event loop</dd>
+<dt>Responsible open source:</dt>
+<dd>GPL obligations, keeping copyrighted assets out of public code, and the etiquette of contributing upstream</dd>
+</dl>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <p>Find me on <a href="https://github.com/Mikem9693">GitHub</a></p>
+  </footer>
+</body>
+</html>
