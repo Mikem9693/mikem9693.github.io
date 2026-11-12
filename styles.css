@@ -110,3 +110,17 @@ a {
 .article-page ul {
   padding-left: 1.25rem;
 }
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--surface);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 0.75rem 0.75rem 0;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.callout p {
+  margin: 0;
+}
