@@ -1,17 +1,28 @@
 /* ==========================================================
-   journey.css: styles for journey.html only.
-   Uses the colour variables from styles.css (--bg, --surface,
-   --text, --muted, --heading, --accent), so if you change a
-   colour there, this page changes too.
+   journey.css: the layout for index.html (the Journey).
+   Colours and fonts come from the variables in styles.css
+   (--bg, --surface, --text, --muted, --heading, --accent).
+   Minimalist approach: no cards or boxes. Space, type size
+   and thin lines do the work instead.
    ========================================================== */
 
-/* ----- Page layout ----- */
+/* One new variable: a faint line colour, used for every divider.
+   It's your --muted colour (#B8C2DD) at 20% opacity. */
+:root {
+  --line: rgba(184, 194, 221, 0.2);
+}
+
+/* ----- Page frame ----- */
+
+.journey-page {
+  padding: 0 1.5rem;     /* overrides the 2rem padding in styles.css */
+  gap: 0;
+}
 
 .journey-header,
-.journey-page main,
-.journey-page footer {
+.journey-page main {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1040px;
   margin: 0 auto;
 }
 
@@ -24,34 +35,228 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
 }
 
-.journey-heading {
-  text-align: center;
+.journey-header a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.journey-heading h1 {
+.journey-header a:hover {
+  color: var(--accent);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+}
+
+.site-nav a {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ----- My Thoughts drop-down (a <details> element) ----- */
+
+  /* On phones, position the menus against the whole nav row instead of
+     their own link, so every menu lines up with the left edge and fits. */
+  .site-nav {
+    position: relative;
+  }
+
+  .nav-menu {
+    position: static;
+  }
+
+  .nav-menu ul {
+    left: 0;
+    right: auto;
+  }
+
+
+.nav-menu ul {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  z-index: 10;           /* sits above the page content */
+  width: 18rem;
   margin: 0;
-  font-size: 1.75rem;
+  padding: 0.5rem 0;
+  list-style: none;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
 }
 
-.journey-heading .label {
-  margin: 0;
-}
-
-/* Every page of the journey is a card, like your homepage tiles. */
-.journey-page-item {
-  background: var(--surface);
-  border-radius: 1rem;
-  padding: 2.5rem;
-}
-
-/* Without JavaScript, the pages stack in a column like a normal CV. */
-.journey-track {
+.nav-menu li a {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0.15rem;
+  padding: 0.6rem 1rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-menu li a:hover {
+  background: var(--surface);
+}
+
+.nav-menu .label {
+  margin: 0;
+  font-size: 0.7rem;
+}
+
+.nav-menu .nav-menu-all {
+  border-top: 1px solid var(--line);
+  color: var(--accent);
+}
+
+/* Hides an element visually while keeping it available to screen readers.
+   (display: none would hide it from screen readers too.) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Each page: no background, just space above and below. */
+.journey-page-item {
+  padding: 4.5rem 0.25rem 3.5rem;
+}
+
+/* Without JavaScript the pages stack, so a thin line separates them. */
+.journey-page-item + .journey-page-item {
+  border-top: 1px solid var(--line);
+}
+
+.journey-page-item h2 {
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.journey-page-item .lead {
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+/* Section headings inside a page look like labels: small, mono, muted. */
+.role-highlights h3,
+.journey-more h3 {
+  margin: 0 0 1rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* ----- Intro ----- */
+
+/* Limit the width of what's inside the intro, not the page itself.
+   Every page must stay exactly 100% wide, or the sliding goes out of line. */
+.journey-intro > * {
+  max-width: 46rem;
+}
+
+.journey-intro h1 {
+  margin: 0.5rem 0 1.5rem;
+  font-size: clamp(3.5rem, 9vw, 6.5rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.intro-statement {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  line-height: 1.35;
+}
+
+.intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin: 2.5rem 0 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.4rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.button:hover {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.intro-meta {
+  margin: 3rem 0 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ----- Career highlights ----- */
+
+.journey-highlights h2 {
+  margin: 0.25rem 0 3rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.highlight-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2.5rem 3rem;
+}
+
+.highlight-grid li {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.highlight-stat {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.highlight-grid p:not(.highlight-stat) {
+  margin: 0 0 0.75rem;
+}
+
+.highlight-grid a {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.highlight-grid a:hover {
+  color: var(--accent);
 }
 
 /* ----- A role page ----- */
@@ -59,117 +264,185 @@
 .role {
   display: grid;
   grid-template-columns: 1fr 1.6fr;
-  align-content: start;  /* stops the rows stretching when a page is shorter than the tallest one */
-  gap: 2rem 3rem;
+  align-content: start;
+  gap: 2.5rem 4rem;
 }
 
 .role-year {
-  margin: 0 0 1rem;
-  font-size: clamp(4rem, 9vw, 7.5rem);
-  font-weight: 700;
+  margin: 0 0 1.5rem;
+  font-size: clamp(4.5rem, 10vw, 7.5rem);
+  font-weight: 300;
   line-height: 0.9;
   letter-spacing: -0.04em;
+  color: var(--muted);
 }
 
 .role h2 {
-  margin: 0 0 0.25rem;
-  font-size: 1.75rem;
+  margin: 0 0 0.35rem;
+  font-size: 1.6rem;
   line-height: 1.2;
 }
 
 .role-org {
   margin: 0;
-  font-weight: 500;
 }
 
 .role-dates {
-  margin: 0 0 1.25rem;
+  margin: 0.25rem 0 1.5rem;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--muted);
 }
 
+/* Skills as one quiet line of text, separated by dots, instead of boxes. */
 .skills {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.skills li {
-  padding: 0.2rem 0.6rem;
-  border: 1px solid var(--muted);
-  border-radius: 0.5rem;
+  gap: 0.25rem 0.6rem;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--muted);
 }
 
+.skills li + li::before {
+  content: "·";
+  margin-right: 0.6rem;
+}
+
 .role-body .lead {
-  margin-top: 0;
+  margin: 0 0 2rem;
 }
 
-.role-body h3,
-.role-highlights h3 {
-  margin: 1.5rem 0 0.5rem;
-  .role-highlights {
-  grid-column: 1 / -1;
-}
-
-.role-highlights h3:first-child {
-  margin-top: 0;
-}
-}
-
-/* The key achievement panel borrows the pink ring from your tile hover. */
+/* The key achievement: a big number beside its explanation, under a thin line. */
 .achievement {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr;
   gap: 1rem 2rem;
-  margin: 1.5rem 0 0;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  background: var(--bg);
-  box-shadow: 0 0 0 2px var(--accent);
-}
-
-.achievement > div {
-  flex: 1 1 16rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
 }
 
 .achievement-stat {
   margin: 0;
-  font-size: clamp(2.5rem, 5vw, 3.75rem);
-  font-weight: 700;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 300;
   line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
   color: var(--accent);
 }
 
-.achievement .label,
-.achievement h3 {
+.achievement .label {
   margin: 0 0 0.25rem;
+}
+
+.achievement h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
 }
 
 .achievement p:last-child {
   margin: 0;
 }
 
-/* ----- Final page ----- */
-
-.journey-end h2 {
-  margin: 0 0 1rem;
-  font-size: 2.25rem;
-  line-height: 1.15;
+/* Highlights run across the full width of the page, in two columns where there's room. */
+.role-highlights {
+  grid-column: 1 / -1;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
 }
 
-.journey-end-links {
+.role-highlights ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem 3rem;
+}
+
+.role-highlights li {
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+/* A short pink dash instead of a bullet point. */
+.role-highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ----- More (the final page) ----- */
+
+.journey-more h2 {
+  max-width: 40rem;
+  margin: 0.25rem 0 1rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  line-height: 1.2;
+}
+
+.contact-links {
+  list-style: none;
+  margin: 2rem 0 3.5rem;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem 2rem;
-  font-weight: 700;
+  font-weight: 500;
+}
+
+.more-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.journey-more h3:not(:first-child) {
+  margin-top: 2.5rem;
+}
+
+.more-list {
+  margin: 0;
+}
+
+.more-list dt {
+  font-weight: 500;
+}
+
+.more-list dt a {
+  color: var(--text);
+}
+
+.more-list dt a:hover {
+  color: var(--accent);
+}
+
+.more-list dt span {
+  margin-left: 0.5rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.more-list dd {
+  margin: 0.15rem 0 1.1rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.journey-more > p:last-child {
+  margin: 3rem 0 0;
 }
 
 /* ==========================================================
@@ -179,21 +452,21 @@
 
 .is-book .journey-viewport {
   overflow: hidden;      /* hides the pages to the left and right... */
-  overflow: clip;        /* ...and stops the browser scrolling it sideways when a link like #role-3 opens.
-                            Older browsers ignore this line and keep "hidden". */
-  border-radius: 1rem;
+  overflow: clip;        /* ...and stops the browser scrolling it sideways. */
   transition: height 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .is-book .journey-track {
-  flex-direction: row;   /* pages sit side by side instead of stacked */
-  gap: 0;
+  display: flex;
+  align-items: flex-start; /* each page only as tall as its own content */
   transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
-  align-items: flex-start;
 }
 
 .is-book .journey-page-item {
   flex: 0 0 100%;        /* each page is exactly one viewport wide */
+  min-width: 0;
+  box-sizing: border-box;
+  border-top: none;      /* no dividing lines between pages in book mode */
 }
 
 /* ----- Navigation bar ----- */
@@ -201,46 +474,57 @@
 .journey-nav {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 1.5rem;
+  padding: 1.25rem 0 2rem;
+  border-top: 1px solid var(--line);
 }
 
-/* Important: "display: flex" above would override the hidden attribute,
-   so this rule puts it back. */
+/* "display: flex" above would override the hidden attribute, so this puts it back. */
 .journey-nav[hidden] {
   display: none;
 }
 
-.journey-nav button {
-  min-height: 44px;
-  padding: 0 1.25rem;
-  border: 1px solid var(--muted);
-  border-radius: 0.5rem;
-  background: transparent;
+.journey-prev,
+.journey-next {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: none;
   color: var(--text);
   font: inherit;
-  font-weight: 700;
+  font-size: 1.1rem;
   cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.journey-nav .journey-next {
-  background: var(--accent);
+.journey-next {
   border-color: var(--accent);
-  color: var(--bg);
+  color: var(--accent);
 }
 
-.journey-nav button:disabled {
-  opacity: 0.4;
+.journey-prev:hover:not(:disabled),
+.journey-next:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.journey-prev:disabled,
+.journey-next:disabled {
+  opacity: 0.3;
   cursor: default;
 }
 
-.journey-nav button:focus-visible {
+.journey-nav button:focus-visible,
+.journey-page a:focus-visible {
   outline: 2px solid var(--heading);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
 /* The year strip */
 .journey-spine {
+  position: relative;    /* lets journey.js measure each button's position within the strip */
   flex: 1;
   list-style: none;
   margin: 0;
@@ -250,101 +534,80 @@
   overflow-x: auto;
 }
 
-.journey-nav .spine-button {
+.spine-button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.45rem;
   min-width: 44px;
+  min-height: 44px;
   padding: 0.25rem;
   border: none;
   background: none;
   color: var(--muted);
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.75rem;
-  font-weight: 400;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.spine-button:hover {
+  color: var(--text);
 }
 
 .spine-dot {
-  width: 10px;
-  height: 10px;
-  border: 2px solid var(--muted);
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
+  background: var(--line);
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
-/* Pages you've passed and the page you're on get a filled peach dot. */
-.spine-button.is-passed .spine-dot,
+/* Pages you've passed get a brighter dot; the current page gets a larger peach one. */
+.spine-button.is-passed .spine-dot {
+  background: var(--muted);
+}
+
 .spine-button[aria-current] .spine-dot {
   background: var(--heading);
-  border-color: var(--heading);
+  transform: scale(1.6);
 }
 
-.journey-nav .spine-button[aria-current] {
+.spine-button[aria-current] {
   color: var(--text);
-  font-weight: 700;
-}
-
-.spine-button[aria-current] .spine-dot {
-  transform: scale(1.5);
 }
 
 /* Some people set their device to reduce motion. Respect that. */
 @media (prefers-reduced-motion: reduce) {
-    .is-book .journey-viewport,
-  .spine-dot {
+  .is-book .journey-viewport,
+  .is-book .journey-track,
+  .spine-dot,
+  .button {
     transition: none;
   }
 }
 
-/* Phones: one column, less padding, previous and next on their own row. */
+/* Phones: single column, less space, year strip above the arrows. */
 @media (max-width: 700px) {
-  .role {
+  .role,
+  .more-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement {
     grid-template-columns: 1fr;
   }
 
   .journey-page-item {
-    padding: 1.5rem;
+    padding: 3rem 0.25rem 2.5rem;
   }
 
   .journey-nav {
     flex-wrap: wrap;
+    justify-content: space-between;
   }
 
   .journey-spine {
-    order: -1;           /* moves the year strip above the buttons */
+    order: -1;
     flex-basis: 100%;
   }
-}
-
-/* ----- Side projects page ----- */
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-  gap: 1rem;
-}
-
-.journey-extras h2 {
-  margin: 0 0 1rem;
-  font-size: 2.25rem;
-  line-height: 1.15;
-}
-
-.journey-extras h3 {
-  font-size: 1rem;
-  margin: 2rem 0 0.75rem;
-}
-
-.journey-extras h4 {
-  margin: 0 0 0.5rem;
-  color: var(--heading);
-}
-
-.journey-extras .tile {
-  background: var(--bg);
-}
-
-.journey-extras .tile p:last-child {
-  margin-bottom: 0;
 }
