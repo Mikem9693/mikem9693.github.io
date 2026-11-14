@@ -1,0 +1,350 @@
+/* ==========================================================
+   journey.css: styles for journey.html only.
+   Uses the colour variables from styles.css (--bg, --surface,
+   --text, --muted, --heading, --accent), so if you change a
+   colour there, this page changes too.
+   ========================================================== */
+
+/* ----- Page layout ----- */
+
+.journey-header,
+.journey-page main,
+.journey-page footer {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.journey-page main {
+  flex: 1;
+}
+
+.journey-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.journey-heading {
+  text-align: center;
+}
+
+.journey-heading h1 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.journey-heading .label {
+  margin: 0;
+}
+
+/* Every page of the journey is a card, like your homepage tiles. */
+.journey-page-item {
+  background: var(--surface);
+  border-radius: 1rem;
+  padding: 2.5rem;
+}
+
+/* Without JavaScript, the pages stack in a column like a normal CV. */
+.journey-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ----- A role page ----- */
+
+.role {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  align-content: start;  /* stops the rows stretching when a page is shorter than the tallest one */
+  gap: 2rem 3rem;
+}
+
+.role-year {
+  margin: 0 0 1rem;
+  font-size: clamp(4rem, 9vw, 7.5rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.role h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.role-org {
+  margin: 0;
+  font-weight: 500;
+}
+
+.role-dates {
+  margin: 0 0 1.25rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.skills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills li {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--muted);
+  border-radius: 0.5rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.role-body .lead {
+  margin-top: 0;
+}
+
+.role-body h3,
+.role-highlights h3 {
+  margin: 1.5rem 0 0.5rem;
+  .role-highlights {
+  grid-column: 1 / -1;
+}
+
+.role-highlights h3:first-child {
+  margin-top: 0;
+}
+}
+
+/* The key achievement panel borrows the pink ring from your tile hover. */
+.achievement {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin: 1.5rem 0 0;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.achievement > div {
+  flex: 1 1 16rem;
+}
+
+.achievement-stat {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.achievement .label,
+.achievement h3 {
+  margin: 0 0 0.25rem;
+}
+
+.achievement p:last-child {
+  margin: 0;
+}
+
+/* ----- Final page ----- */
+
+.journey-end h2 {
+  margin: 0 0 1rem;
+  font-size: 2.25rem;
+  line-height: 1.15;
+}
+
+.journey-end-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  font-weight: 700;
+}
+
+/* ==========================================================
+   Book mode. journey.js adds the class "is-book" to <body>,
+   so these rules only apply when JavaScript is running.
+   ========================================================== */
+
+.is-book .journey-viewport {
+  overflow: hidden;      /* hides the pages to the left and right... */
+  overflow: clip;        /* ...and stops the browser scrolling it sideways when a link like #role-3 opens.
+                            Older browsers ignore this line and keep "hidden". */
+  border-radius: 1rem;
+  transition: height 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.is-book .journey-track {
+  flex-direction: row;   /* pages sit side by side instead of stacked */
+  gap: 0;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  align-items: flex-start;
+}
+
+.is-book .journey-page-item {
+  flex: 0 0 100%;        /* each page is exactly one viewport wide */
+}
+
+/* ----- Navigation bar ----- */
+
+.journey-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Important: "display: flex" above would override the hidden attribute,
+   so this rule puts it back. */
+.journey-nav[hidden] {
+  display: none;
+}
+
+.journey-nav button {
+  min-height: 44px;
+  padding: 0 1.25rem;
+  border: 1px solid var(--muted);
+  border-radius: 0.5rem;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.journey-nav .journey-next {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.journey-nav button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.journey-nav button:focus-visible {
+  outline: 2px solid var(--heading);
+  outline-offset: 2px;
+}
+
+/* The year strip */
+.journey-spine {
+  flex: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.journey-nav .spine-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 44px;
+  padding: 0.25rem;
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.spine-dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--muted);
+  border-radius: 50%;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+/* Pages you've passed and the page you're on get a filled peach dot. */
+.spine-button.is-passed .spine-dot,
+.spine-button[aria-current] .spine-dot {
+  background: var(--heading);
+  border-color: var(--heading);
+}
+
+.journey-nav .spine-button[aria-current] {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.spine-button[aria-current] .spine-dot {
+  transform: scale(1.5);
+}
+
+/* Some people set their device to reduce motion. Respect that. */
+@media (prefers-reduced-motion: reduce) {
+    .is-book .journey-viewport,
+  .spine-dot {
+    transition: none;
+  }
+}
+
+/* Phones: one column, less padding, previous and next on their own row. */
+@media (max-width: 700px) {
+  .role {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-page-item {
+    padding: 1.5rem;
+  }
+
+  .journey-nav {
+    flex-wrap: wrap;
+  }
+
+  .journey-spine {
+    order: -1;           /* moves the year strip above the buttons */
+    flex-basis: 100%;
+  }
+}
+
+/* ----- Side projects page ----- */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+}
+
+.journey-extras h2 {
+  margin: 0 0 1rem;
+  font-size: 2.25rem;
+  line-height: 1.15;
+}
+
+.journey-extras h3 {
+  font-size: 1rem;
+  margin: 2rem 0 0.75rem;
+}
+
+.journey-extras h4 {
+  margin: 0 0 0.5rem;
+  color: var(--heading);
+}
+
+.journey-extras .tile {
+  background: var(--bg);
+}
+
+.journey-extras .tile p:last-child {
+  margin-bottom: 0;
+}

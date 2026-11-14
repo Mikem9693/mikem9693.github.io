@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Journey | Mike Morris</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Your main stylesheet first, then the journey styles. Because journey.css
+       loads second, its rules win any tie (the cascade). -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="journey.css">
+</head>
+<body class="journey-page">
+
+  <header class="journey-header">
+    <a href="index.html">← Back to home</a>
+    <div class="journey-heading">
+      <h1>My Journey</h1>
+      <!-- journey.js writes "Page 2 of 10 · 2017" in here. aria-live makes screen readers announce it. -->
+      <p class="label" id="journey-counter" aria-live="polite"></p>
+    </div>
+    <a href="cv.pdf">Download CV (PDF)</a>
+  </header>
+
+  <main>
+    <!-- The viewport is the "window" you look through. The track holds every page side by side
+         and journey.js slides it left and right. Without JavaScript, the pages simply stack. -->
+    <div class="journey-viewport">
+      <div class="journey-track">
+
+        <!-- ===== Role 1 =====
+             Every role follows the same pattern. To add one, copy a whole <article> block,
+             give it a new id and data-label, and journey.js adds it to the year strip.
+             All facts and figures come from the master CV: change them there first. -->
+        <article class="journey-page-item role" id="role-2016" data-label="2016" aria-labelledby="role-2016-title">
+          <div class="role-meta">
+            <p class="role-year" aria-hidden="true">2016</p>
+            <h2 id="role-2016-title">Business Transformation</h2>
+            <p class="role-org">Greater Manchester Shared Service / Trafford Borough Council</p>
+            <p class="role-dates">Sep 2016 - Nov 2017</p>
+            <ul class="skills" aria-label="Skills used in this role">
+              <li>Process improvement</li>
+              <li>Excel automation</li>
+              <li>Recruitment</li>
+            </ul>
+          </div>
+          <div class="role-body">
+            <p class="lead">Recruitment and HR shared service, including the Stop-Gap supply staffing service for 35 client schools and 200 supply staff.</p>
+            <div class="achievement">
+              <p class="achievement-stat">90%</p>
+              <div>
+                <p class="label">Key achievement</p>
+                <h3>Turnaround</h3>
+                <p>Returned the Stop-Gap service to profitability after 16 consecutive loss-making quarters, and cut time spent on administrative tasks by 90% with a digital source of records and macro-based automation.</p>
+              </div>
+            </div>
+            </div><div class="role-highlights"><h3>Highlights</h3>
+            <ul>
+              <li>Added email booking and an automated receipting system, cutting billing queries by 35%; 100% of customers surveyed gave positive feedback.</li>
+              <li>Streamlined the recruitment workflow and introduced an online recruitment portal, reducing time at each stage.</li>
+              <li>Improved customer relations with schools through customer engagement and feedback</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== Role 2 ===== -->
+        <article class="journey-page-item role" id="role-2017" data-label="2017" aria-labelledby="role-2017-title">
+          <div class="role-meta">
+            <p class="role-year" aria-hidden="true">2017</p>
+            <h2 id="role-2017-title">Assurance and Risk Support Officer</h2>
+            <p class="role-org">Home Office</p>
+            <p class="role-dates">Nov 2017 - Feb 2019</p>
+            <ul class="skills" aria-label="Skills used in this role">
+              <li>Excel automation</li>
+              <li>Risk frameworks</li>
+              <li>Process design</li>
+            </ul>
+          </div>
+          <div class="role-body">
+            <p class="lead">Supporting the Home Office's Risk and Assurance team, and my first move into UK Government.</p>
+            <div class="achievement">
+              <p class="achievement-stat">20% Reduction</p>
+              <div>
+                <p class="label">Key achievement</p>
+                <h3>Automation</h3>
+                <p>Built Excel macro automation cutting a weekly multi-hour data task to around 10 minutes, reducing administrative workload by 20% across two teams.</p>
+              </div>
+            </div>
+            </div><div class="role-highlights"><h3>Highlights</h3>
+            <ul>
+              <li>Redesigned the resource pool matching process with skills-based, anonymised shortlisting, cutting matching time by around 25% and reducing unconscious bias.</li>
+              <li>Developed risk assessment frameworks and a medium-term improvement strategy for the Risk and Assurance team, improving reporting accuracy.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== Role 3 ===== -->
+        <article class="journey-page-item role" id="role-2018" data-label="2018" aria-labelledby="role-2018-title">
+          <div class="role-meta">
+            <p class="role-year" aria-hidden="true">2018</p>
+            <h2 id="role-2018-title">Team Leader, BICS Data Quality and Cleanse</h2>
+            <p class="role-org">Home Office</p>
+            <p class="role-dates">Dec 2018 - Dec 2019</p>
+            <ul class="skills" aria-label="Skills used in this role">
+              <li>Team leadership</li>
+              <li>Coaching</li>
+              <li>Data quality</li>
+            </ul>
+          </div>
+          <div class="role-body">
+            <p class="lead">Leading a team of 10 responsible for data quality and cleanse across large case cohorts.</p>
+            <div class="achievement">
+              <p class="achievement-stat">+65%</p>
+              <div>
+                <p class="label">Key achievement</p>
+                <h3>Team turnaround</h3>
+                <p>Restructured process and culture to raise throughput by 65%, moving the team from "underachievers" to one of the most efficient, as recognised by leadership.</p>
+              </div>
+            </div>
+            </div><div class="role-highlights"><h3>Highlights</h3>
+            <ul>
+              <li>Built development pathways and coaching; every team member improved between reviews and 4 of 10 were promoted within 9 months.</li>
+              <li>Designed data quality and cleanse frameworks for cohorts of 6,000 to 180,000 cases, with tracking tools, QA protocols and formal reports to senior stakeholders.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== Role 4 ===== -->
+        <article class="journey-page-item role" id="role-2019" data-label="2019" aria-labelledby="role-2019-title">
+          <div class="role-meta">
+            <p class="role-year" aria-hidden="true">2019</p>
+            <h2 id="role-2019-title">Policy Manager</h2>
+            <p class="role-org">Maritime and Coastguard Agency</p>
+            <p class="role-dates">Dec 2019 - Oct 2020</p>
+            <ul class="skills" aria-label="Skills used in this role">
+              <li>Crisis management</li>
+              <li>Policy</li>
+              <li>International stakeholders</li>
+            </ul>
+          </div>
+          <div class="role-body">
+            <p class="lead">Maritime labour policy, which became the front line of the UK's COVID-19 response for seafarers.</p>
+            <div class="achievement">
+              <p class="achievement-stat">0 Delays</p>
+              <div>
+                <p class="label">Key achievement</p>
+                <h3>COVID-19 response</h3>
+                <p>Managed the UK maritime seafarer repatriation response, repatriating 80% of seafarers on UK-flagged ships within their legal limit with zero delays to global shipping.</p>
+              </div>
+            </div>
+            </div><div class="role-highlights"><h3>Highlights</h3>
+            <ul>
+              <li>Represented the UK at international maritime conventions, including the European Maritime Safety Agency workshop in Lisbon.</li>
+              <li>Managed biannual tripartite working group of seafarers, shipowners and Government, then restructured it to run remotley during COVID-19 pandemic.</li>
+              <li>Led Maritime Labour Convention 2006 policy work and its post-implementation review, analysing compliance data to drive improvements.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== Role 5 ===== -->
+        <article class="journey-page-item role" id="role-2020" data-label="2020" aria-labelledby="role-2020-title">
+          <div class="role-meta">
+            <p class="role-year" aria-hidden="true">2020</p>
+            <h2 id="role-2020-title">Programme Support and Private Secretary, LAMP Testing</h2>
+            <p class="role-org">Department of Health and Social Care (loan from MCGA)</p>
+            <p class="role-dates">Oct 2020 - Feb 2022</p>
+            <ul class="skills" aria-label="Skills used in this role">
+              <li>Programme delivery</li>
+              <li>Vendor negotiation</li>
+              <li>Governance</li>
+            </ul>
+          </div>
+          <div class="role-body">
+            <p class="lead">Delivering saliva-based LAMP COVID-19 testing for NHS staff during the national emergency, reporting to the Programme Director and Chief Scientific Officer.</p>
+            <div class="achievement">
+              <p class="achievement-stat">25%</p>
+              <div>
+                <p class="label">Key achievement</p>
+                <h3>National rollout</h3>
+                <p>Delivered LAMP COVID-19 testing across 6 NHS Trusts covering 30+ hospitals and universities, providing routine testing capacity for 25% of the NHS workforce, ahead of schedule and under budget.</p>
+              </div>
+            </div>
+            </div><div class="role-highlights"><h3>Highlights</h3>
+            <ul>
+              <li>Ran six concurrent site implementation workstreams, each with its own plan tracking milestones, dependencies and compliance.</li>
+              <li>Secured a 12-month warranty extension at no additional cost for 200+ unused LAMP machines, with no contractual obligation on the vendor.</li>
+              <li>Automated the lab ordering process, saving around 2 hours a week across 5 labs.</li>
+              <li>As Private Secretary, advised the Director of LAMP Testing on policy implementation,cross-departmental work and departmental standards and practices.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== Role 6 ===== -->
+        <article class="journey-page-item role" id="role-2022" data-label="2022" aria-labelledby="role-2022-title">
+          <div class="role-meta">
+            <p class="role-year" aria-hidden="true">2022</p>
+            <h2 id="role-2022-title">Project &amp; Product Manager</h2>
+            <p class="role-org">Lloyds Banking Group</p>
+            <p class="role-dates">Mar 2022 - Apr 2023 · Contract</p>
+            <ul class="skills" aria-label="Skills used in this role">
+              <li>Roadmapping</li>
+              <li>Portfolio governance</li>
+              <li>Release planning</li>
+            </ul>
+          </div>
+          <div class="role-body">
+            <p class="lead">The UK's largest retail and commercial bank. Managed a portfolio of 35+ initiatives across 7 business areas and customer-facing digital products serving 350,000+ users.</p>
+            <div class="achievement">
+              <p class="achievement-stat">6&nbsp;clashes</p>
+              <div>
+                <p class="label">Key achievement</p>
+                <h3>Release roadmap</h3>
+                <p>Built the delivery roadmap for 35 projects across 7 departments and 12 monthly release windows, exposing 6 release clashes; resequenced with senior leaders, avoiding at least 3 project delays.</p>
+              </div>
+            </div>
+            </div><div class="role-highlights"><h3>Highlights</h3>
+            <ul>
+              <li>Introduced portfolio-level governance, dependency management and alignment protocols, reducing inter-project conflicts by 30%.</li>
+              <li>Developed stage-gate governance and PMO standards across business units, moving delivery from inconsistent practice to a standard framework.</li>
+              <li>Took customer-facing digital products from business case to launch, coordinating Technology, Compliance, Marketing and Operations for 350,000+ customers.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== Role 7 ===== -->
+        <article class="journey-page-item role" id="role-2023" data-label="2023" aria-labelledby="role-2023-title">
+          <div class="role-meta">
+            <p class="role-year" aria-hidden="true">2023</p>
+            <h2 id="role-2023-title">Head of PMO</h2>
+            <p class="role-org">QuantSpark</p>
+            <p class="role-dates">Apr 2023 - Aug 2023</p>
+            <ul class="skills" aria-label="Skills used in this role">
+              <li>PMO set-up</li>
+              <li>Asana</li>
+              <li>Runn.io</li>
+            </ul>
+          </div>
+          <div class="role-body">
+            <p class="lead">Data science and analytics consultancy of around 80 people. Recruited to build PMO capability from inception, reporting to the CEO as a member of the Senior Leadership Team.</p>
+            <div class="achievement">
+              <p class="achievement-stat">4&nbsp;months</p>
+              <div>
+                <p class="label">Key achievement</p>
+                <h3>PMO from zero</h3>
+                <p>Designed and implemented the PMO framework (lifecycle methodology, portfolio governance, resource management, risk), taking the firm from no formal practice to operational maturity in four months.</p>
+              </div>
+            </div>
+            </div><div class="role-highlights"><h3>Highlights</h3>
+            <ul>
+              <li>Introduced stage-gate governance that improved revenue forecasting accuracy by 30%, project profitability visibility by 40% and overall project efficiency by 25%.</li>
+              <li>Built skills-based allocation and capacity planning for 30+ consultants across 15+ concurrent projects, raising billable utilisation by 25% and cutting bench time by 40%.</li>
+              <li>Designed and piloted RAID training with 10 project staff; CEO intervention on pilot projects fell by 65%.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== Role 8 ===== -->
+        <article class="journey-page-item role" id="role-2024" data-label="2024" aria-labelledby="role-2024-title">
+          <div class="role-meta">
+            <p class="role-year" aria-hidden="true">2024</p>
+            <h2 id="role-2024-title">Project Manager - Global</h2>
+            <p class="role-org">Vantage Data Centres</p>
+            <p class="role-dates">Feb 2024 - Mar 2026 · Role made redundant</p>
+            <ul class="skills" aria-label="Skills used in this role">
+              <li>Power BI</li>
+              <li>MS Project</li>
+              <li>Azure DevOps</li>
+              <li>Power Platform</li>
+            </ul>
+          </div>
+          <div class="role-body">
+            <p class="lead">Global hyperscale data centre provider, 1,000+ employees. Delivered projects and platform governance across EMEA, APAC and North America, working asynchronously across seven time zones.</p>
+            <div class="achievement">
+              <p class="achievement-stat">$150k</p>
+              <div>
+                <p class="label">Key achievement</p>
+                <h3>Programme rescue and cancellation</h3>
+                <p>Took over a CFIUS regulatory segmentation project that had been Red for 2+ months and reached Green within two weeks. Then recommended cancelling it as no longer fit for purpose, saving $150,000 with agreement from Legal, Cybersecurity and IT.</p>
+              </div>
+            </div>
+            </div><div class="role-highlights"><h3>Highlights</h3>
+            <ul>
+              <li>Built a Power BI project hub for a Director overseeing 26 projects, cutting utilisation from 145% to 90% in three weeks; four projects moved from Red to Green.</li>
+              <li>Introduced Agile ceremonies, story pointing and MVPs, cutting load on 8 developers from 300% to 85% over four sprints.</li>
+              <li>Built a department-wide PMO framework from inception, reducing project delays by 25% and delivery timelines by 20%.</li>
+              <li>Took a stalled executive dashboard programme from 1 to 8 live dashboards, unifying up to five source systems through a bronze, silver and gold data lake.</li>
+              <li>Managed a $10M estate-wide hardware upgrade across 30+ data centre facilities, delivering on time with minimal disruption.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== Role 9 (current) ===== -->
+        <article class="journey-page-item role" id="role-2026" data-label="2026" aria-labelledby="role-2026-title">
+          <div class="role-meta">
+            <p class="role-year" aria-hidden="true">2026</p>
+            <h2 id="role-2026-title">Founder</h2>
+            <p class="role-org">Early-stage B2C SaaS start-up (stealth)</p>
+            <p class="role-dates">Mar 2026 - Present</p>
+            <ul class="skills" aria-label="Skills used in this role">
+              <li>Product strategy</li>
+              <li>Commercial modelling</li>
+              <li>UK GDPR</li>
+            </ul>
+          </div>
+          <div class="role-body">
+            <p class="lead">Founded a mobile-first subscription platform alongside a technical co-founder. Product details are withheld while the business is pre-launch.</p>
+            <div class="achievement">
+              <p class="achievement-stat">12+</p>
+              <div>
+                <p class="label">Key achievement</p>
+                <h3>Concept to launch-ready</h3>
+                <p>Took the platform from concept to a de-risked, launch-ready specification: 12+ specification documents, a four-phase roadmap and 15+ interactive prototypes covering every major user flow.</p>
+              </div>
+            </div>
+            </div><div class="role-highlights"></div><div class="role-highlights"><h3>Highlights</h3>
+            <ul>
+              <li>Recruited and structured an equal technical co-founder partnership, documenting equity, vesting, reserved matters and IP assignment.</li>
+              <li>Built the commercial model and go-to-market plan, benchmarking pricing against 20+ competitors and simplifying a four-tier model to two tiers.</li>
+              <li>Drafted a UK GDPR-compliant privacy policy, incorporated the company and completed ICO registration.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- ===== The Fun Stuff (hobbies & learning) ===== -->
+          <section class="journey-page-item journey-extras" id="side-projects" data-label="Projects" aria-labelledby="side-projects-title">
+          <p class="label">Alongside the day job</p>
+          <h2 id="side-projects-title">Side projects and hobbies</h2>
+          <p class="lead">What I build to understand the technology, the businesses I advise, and what I do away from a screen.</p>
+
+          <h3>Things I've built</h3>
+          <div class="card-grid">
+            <article class="tile">
+              <p class="label">2026 · WebAssembly · AI delivery</p>
+              <h4>Red Alert in the browser</h4>
+              <p>A browser port of Command &amp; Conquer: Red Alert (1996), with an agentic AI coding.</p>
+              <a href="Projects/Red-Alert-Browser.html">Find out more</a>
+            </article>
+            <article class="tile">
+              <p class="label">n8n · Apify · AI workflows</p>
+              <h4>Job search automation</h4>
+              <p>A low-cost AI model scores every scraped role against my CV, and only roles above 60% go to a stronger model to draft a cover letter. Published on GitHub after a full data-protection review.</p>
+               <a href="Projects/Job-Search-Automation.html">Find out more</a> 
+            </article>
+            <article class="tile">
+              <p class="label">Google Workspace · Script Automation · Google Data Studio</p>
+              <h4>Semi-Automated Application Tracking</h4>
+              <p>Autmated record keeping tracking all job applications made and outcomes feeding into live dashboard </p>
+              <a href="Projects/records-automation.html">Find out more</a>
+            </article>
+            <article class="tile">
+              <p class="label">Svelte · AI-assisted development</p>
+              <h4>Document navigation app</h4>
+              <p>Custom web app created for presenting sensitive data during meeting.</p>
+            </article>
+            <article class="tile">
+              <p class="label">Raspberry Pi · DNS · Linux</p>
+              <h4>Pi-hole home network</h4>
+              <p>Network-wide ad and tracker blocking.</p>
+            </article>
+          </div>
+
+          <h3>Advisory work</h3>
+          <dl class="highlights">
+            <dt><a href="https://www.vierma.cz/">Vierma</a> · Feb 2026 - Present</dt>
+            <dd>Commercial and growth advisor to a premium textile e-commerce start-up based in Prague. Attending international trade exhibitions.</dd>
+            <dt><a href="https://www.TheGKN.net">The Goalkeeping Network</a> · Jan 2021 - Present</dt>
+            <dd>Supporting company Founders with commercial and business advice.</dd>
+            <dt>Born Again Boots · Feb 2023 - Jan 2025</dt>
+            <dd>Business planning for a sustainable footwear company, including P&amp;L forecasting, financial controls and reporting.</dd>
+          </dl>
+
+          <h3>Outside work</h3>
+          <div class="card-grid">
+            <article class="tile">
+              <p class="label">Sport</p>
+              <h4>Football and fundraising</h4>
+              <p>Organised charity football matches between 2017 and 2022, raising £7,500+ for personal causes, Ronald McDonald House and the Darby Rimmer MND Foundation.</p>
+            </article>
+            <article class="tile">
+              <p class="label">Coaching</p>
+              <h4>Grassroots Football</h4>
+              <p>Goalkeeing coach supporting Step 7 grassroots club since October 2025. Last season achieved promotion, two cup finals and one cup win</p>
+            </article>
+            <article class="tile">
+              <p class="label">Football</p>
+              <h4>Goalkeeing</h4>
+              <p>10 years warming benches around non-league across North-West, South Coast and London.</p>
+            </article>
+          </div>
+        </section>
+
+
+        <!-- ===== The next role ===== -->
+        <section class="journey-page-item journey-end" id="next" data-label="Next" aria-labelledby="next-title">
+          <p class="label">The next role</p>
+          <h2 id="next-title">Looking for project and programme delivery, PMO and governance roles.</h2>
+          <p class="lead">Open to London, hybrid and remote roles. If your team is working on something like this, I'd like to hear about it.</p>
+          <p>Open to contract, Permanent or Freelance opportunities</p>
+          <p class="journey-end-links">
+            <a href="mailto:"Mikem9693@Gmail.com">Email me</a>
+            <a href="cv.pdf">Download CV (PDF)</a>
+            <a href="#role-2016">Back to 2016</a>
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- The navigation bar. It starts hidden, and journey.js reveals it, because
+         these buttons only work when JavaScript is running. -->
+    <nav class="journey-nav" aria-label="Move through my journey" hidden>
+      <button type="button" class="journey-prev">← Previous</button>
+      <ol class="journey-spine"></ol>
+      <button type="button" class="journey-next">Next →</button>
+    </nav>
+  </main>
+
+  <footer>
+    <p>Find me on <a href="https://github.com/Mikem9693">GitHub</a></p>
+  </footer>
+
+  <!-- Scripts go at the end of <body>, so the page's HTML exists before the script looks for it. -->
+  <script src="journey.js"></script>
+</body>
+</html>
