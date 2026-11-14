@@ -1,3 +1,10 @@
+/* ==========================================================
+   styles.css: the base for every page.
+   Colours, fonts and default text styles.
+   site.css (header, menus, articles) and journey.css (the book)
+   build on top of this.
+   ========================================================== */
+
 :root {
   --bg: #0B1B3F;
   --surface: #1A2C5B;
@@ -24,12 +31,6 @@ body {
   gap: 1rem;
 }
 
-main, footer {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
 h1, h2, h3 {
   color: var(--heading);
 }
@@ -43,31 +44,6 @@ a {
   color: var(--accent);
 }
 
-.bento {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, auto);
-  gap: 1rem;
-  flex: 1;
-}
-
-.tile {
-  background: var(--surface);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.tile:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 0 2px var(--accent);
-}
-
-.tile h1,
-.tile h2 {
-  margin-top: 0;
-}
-
 .label {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.8rem;
@@ -75,52 +51,4 @@ a {
   letter-spacing: 0.08em;
   color: var(--muted);
   margin: 0 0 0.75rem;
-}
-
-.tile-intro    { grid-column: span 3; }
-.tile-featured { grid-column: span 2; grid-row: span 2; }
-.tile-built    { grid-column: span 2; }
-.tile-toolkit  { grid-column: span 3; }
-
-@media (max-width: 700px) {
-  .bento {
-    grid-template-columns: 1fr;
-    grid-template-rows: none;
-  }
-  .tile {
-    grid-column: auto;
-    grid-row: auto;
-  }
-}
-
-.highlights dt {
-  color: var(--heading);
-  font-weight: 500;
-}
-
-.highlights dd {
-  margin: 0 0 0.75rem;
-}
-.article-page h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 1rem 0 0.5rem;
-}
-
-.article-page ul {
-  padding-left: 1.25rem;
-}
-
-.callout {
-  margin: 2rem 0;
-  padding: 1.25rem 1.5rem;
-  background: var(--surface);
-  border-left: 4px solid var(--accent);
-  border-radius: 0 0.75rem 0.75rem 0;
-  font-size: 0.9rem;
-  font-style: italic;
-}
-
-.callout p {
-  margin: 0;
 }

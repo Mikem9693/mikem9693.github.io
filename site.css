@@ -1,0 +1,352 @@
+/* ==========================================================
+   site.css: shared by every page on the site.
+   The header, the drop-down menus, and the layout for
+   article pages (projects and writing).
+   Loads after styles.css on every page.
+   ========================================================== */
+
+/* A faint line colour, used for every divider.
+   It's your --muted colour (#B8C2DD) at 20% opacity. */
+:root {
+  --line: rgba(184, 194, 221, 0.2);
+}
+
+/* ----- Page frame ----- */
+
+body {
+  padding: 0 1.5rem;     /* overrides the 2rem padding in styles.css */
+  gap: 0;
+}
+
+.site-header,
+main {
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+main {
+  flex: 1;
+}
+
+/* ----- Header ----- */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.site-header a:hover {
+  color: var(--accent);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+}
+
+.site-nav a {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ----- Drop-down menus (<details class="nav-menu">) ----- */
+
+.nav-menu {
+  position: relative;    /* the list below is positioned against this */
+}
+
+.nav-menu summary {
+  list-style: none;      /* removes the default triangle */
+  cursor: pointer;
+  color: var(--muted);
+}
+
+.nav-menu summary::-webkit-details-marker {
+  display: none;         /* removes the triangle in Safari */
+}
+
+.nav-menu summary::after {
+  content: " ▾";
+}
+
+.nav-menu[open] summary,
+.nav-menu summary:hover {
+  color: var(--accent);
+}
+
+.nav-menu ul {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  z-index: 10;           /* sits above the page content */
+  width: 18rem;
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+.nav-menu li a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.6rem 1rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-menu li a:hover {
+  background: var(--surface);
+}
+
+.nav-menu .label {
+  margin: 0;
+  font-size: 0.7rem;
+}
+
+.nav-menu .nav-menu-all {
+  border-top: 1px solid var(--line);
+  color: var(--accent);
+}
+
+/* ----- Shared helpers ----- */
+
+/* Hides an element visually while keeping it available to screen readers.
+   (display: none would hide it from screen readers too.) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* A clear outline for keyboard users on every link, button and menu. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--heading);
+  outline-offset: 3px;
+}
+
+/* ==========================================================
+   Article pages: <body class="article-page">
+   One readable column, headings as quiet labels, thin lines.
+   ========================================================== */
+
+.article-page article {
+  max-width: 42rem;      /* about 70 characters a line: comfortable to read */
+  padding: 4rem 0 5rem;
+}
+
+.article-page h1 {
+  margin: 0.5rem 0 1rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+/* Each section starts with a thin line and a small mono heading. */
+.article-page section {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.article-page h2 {
+  margin: 0 0 1rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.article-page h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.article-page p,
+.article-page li,
+.article-page dd {
+  line-height: 1.7;
+}
+
+/* Lists: a short pink dash instead of a bullet, matching the Journey. */
+.article-page article ul {
+  list-style: none;
+  padding: 0;
+}
+
+.article-page article li {
+  position: relative;
+  margin-bottom: 0.6rem;
+  padding-left: 1.25rem;
+}
+
+.article-page article li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* Term-and-description lists: the term in peach, the description below it. */
+.highlights {
+  margin: 0;
+}
+
+.highlights dt {
+  color: var(--heading);
+  font-weight: 500;
+}
+
+.highlights dd {
+  margin: 0.15rem 0 1.25rem;
+}
+
+/* Callouts: a short aside, set apart by size and colour rather than a box. */
+.callout {
+  margin: 2.5rem 0;
+  padding-left: 1.5rem;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--muted);
+  box-shadow: inset 2px 0 0 var(--accent);   /* a thin pink line down the left */
+}
+
+.callout p {
+  margin: 0;
+}
+
+.article-page img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 2rem 0;
+  border-radius: 0.5rem;
+}
+
+/* ----- Phones ----- */
+
+@media (max-width: 700px) {
+  .site-nav {
+    position: relative;  /* menus line up with the nav row's left edge... */
+    gap: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .nav-menu {
+    position: static;    /* ...instead of their own link, so they fit on screen */
+  }
+
+  .nav-menu ul {
+    left: 0;
+    right: auto;
+  }
+
+  .article-page article {
+    padding: 2.5rem 0 4rem;
+  }
+}
+
+/* ==========================================================
+   Writing: <body class="article-page post">
+   Builds on the article layout above. Posts use real
+   subheadings instead of small labels, as they read as one
+   continuous piece rather than set sections.
+   ========================================================== */
+
+.post .standfirst {
+  margin: 0 0 2.5rem;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.post h2 {
+  margin: 3rem 0 0.75rem;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  color: var(--heading);
+}
+
+.post blockquote {
+  margin: 2.5rem 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--accent);
+}
+
+.post blockquote p {
+  margin: 0;
+}
+
+.post figure {
+  margin: 2.5rem 0;
+}
+
+.post figure img {
+  margin: 0;
+}
+
+.post figcaption {
+  margin-top: 0.6rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.post-footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.post-footer .label {
+  margin-bottom: 0.5rem;
+}
+
+/* A list split into two columns. Items run down the first column, then the second.
+   Each column is at least 14rem wide, so on a phone it falls back to one column. */
+.two-columns {
+  columns: 2 14rem;
+  column-gap: 3rem;
+}
+
+.two-columns li {
+  break-inside: avoid;   /* never split one item across two columns */
+}

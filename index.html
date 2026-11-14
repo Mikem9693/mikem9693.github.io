@@ -6,20 +6,22 @@
   <title>Mike Morris | Project Manager</title>
   <meta name="description" content="Mike Morris: Project Manager with 10 years' experience delivering programmes, PMO frameworks and governance. My career, one role at a time.">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <!-- styles.css still sets the colours and fonts for the whole site.
-       journey.css sets the layout of this page, and loads second so it wins any tie. -->
+  <!-- styles.css: colours and fonts for the whole site.
+       site.css: the header, menus and article layout shared by every page.
+       journey.css: the layout of this page only. Later files win any tie. -->
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="site.css">
   <link rel="stylesheet" href="journey.css">
 </head>
 <body class="journey-page">
 
-  <header class="journey-header">
+  <header class="site-header">
     <a class="journey-name" href="#intro">Mike Morris</a>
     <nav class="site-nav" aria-label="Site">
          <details class="nav-menu">
         <summary>My Thoughts</summary>
         <ul>
-          <li><a href="writing/[post-1].html"><span>[Latest post title]</span><span class="label">Thinkpiece · [DD Mon YYYY]</span></a></li>
+          <li><a href="Writings/Luddites.html"><span>Luddites - Tragedy and Warnings</span><span class="label">Thinkpiece · [DD Mon YYYY]</span></a></li>
           <li><a href="writing/[post-2].html"><span>[Second post title]</span><span class="label">Delivery · [DD Mon YYYY]</span></a></li>
           <li><a href="writing/[post-3].html"><span>[Third post title]</span><span class="label">Learning log · [DD Mon YYYY]</span></a></li>
           <li><a class="nav-menu-all" href="writing/index.html">All posts →</a></li>
@@ -28,10 +30,10 @@
        <details class="nav-menu">
         <summary>Projects</summary>
         <ul>
-          <li><a href="Projects/Red-Alert-Browser.html"><span>Red Alert Browser Port</span><span class="label"></span></a></li>
-          <li><a href="Projects/Job-Search-Automation.html"><span>Job Search Automation</span><span class="label"></span></a></li>
-          <li><a href="Projects/records-automation.html"><span>Records Automation</span> <class="label"></span></a></li>
-          <li><a class="nav-menu-all" href="projects/index.html">All posts →</a></li>
+          <li><a href="projects/Red-Alert-Browser.html"><span>Red Alert Browser Port</span><span class="label">WebAssembly · AI delivery</span></a></li>
+          <li><a href="projects/Job-Search-Automation.html"><span>Job Search Automation</span><span class="label">n8n · AI workflows</span></a></li>
+          <li><a href="projects/records-automation.html"><span>Records Automation</span><span class="label">Apps Script · Google Sheets</span></a></li>
+          <li><a class="nav-menu-all" href="projects/index.html">All projects →</a></li>
         </ul>
       </details>
       <a href="https://github.com/Mikem9693">GitHub ↗</a>
@@ -417,7 +419,7 @@
           <h2 id="more-title">Looking for project and programme delivery, PMO and governance roles.</h2>
           <p class="lead">Open to London, hybrid and remote roles. If your team is working on something like this, I'd like to hear about it.</p>
           <ul class="contact-links">
-            <li><a href="Mikem9693@gmail.com">Email</a></li>
+            <li><a href="mailto:Mikem9693@gmail.com">Email</a></li>
             <li><a href="[your LinkedIn URL]">LinkedIn ↗</a></li>
             <li><a href="https://github.com/Mikem9693">GitHub ↗</a></li>
           </ul>
@@ -426,10 +428,12 @@
             <section aria-labelledby="built-title">
               <h3 id="built-title">Things I've built</h3>
               <dl class="more-list">
-                <dt>Red Alert in the browser</dt>
+                <dt><a href="projects/Red-Alert-Browser.html">Red Alert in the browser</a></dt>
                 <dd>A browser port of Command &amp; Conquer: Red Alert (1996), delivered through phase gates with an AI coding assistant as the engineer.</dd>
-                <dt><a href="projects/records-automation.html">Job search automation</a></dt>
+                <dt><a href="projects/Job-Search-Automation.html">Job search automation</a></dt>
                 <dd>An n8n pipeline where a low-cost AI model scores every role and only roles above 60% go to a stronger model to draft a cover letter.</dd>
+                <dt><a href="projects/records-automation.html">Records automation</a></dt>
+                <dd>A Google Sheets tracker that logs each application automatically and keeps its own status up to date.</dd>
                 <dt>Document navigation app</dt>
                 <dd>Built in two hours in Svelte with AI-assisted development; presented 50+ documents with zero issues.</dd>
                 <dt>Pi-hole home network</dt>
@@ -486,6 +490,7 @@
   </main>
 
   <!-- Scripts go at the end of <body>, so the page's HTML exists before the script looks for it. -->
+  <script src="menus.js"></script>
   <script src="journey.js"></script>
 </body>
 </html>

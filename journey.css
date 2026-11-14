@@ -1,134 +1,10 @@
 /* ==========================================================
    journey.css: the layout for index.html (the Journey).
-   Colours and fonts come from the variables in styles.css
-   (--bg, --surface, --text, --muted, --heading, --accent).
+   Colours and fonts come from styles.css; the header, menus
+   and --line come from site.css.
    Minimalist approach: no cards or boxes. Space, type size
    and thin lines do the work instead.
    ========================================================== */
-
-/* One new variable: a faint line colour, used for every divider.
-   It's your --muted colour (#B8C2DD) at 20% opacity. */
-:root {
-  --line: rgba(184, 194, 221, 0.2);
-}
-
-/* ----- Page frame ----- */
-
-.journey-page {
-  padding: 0 1.5rem;     /* overrides the 2rem padding in styles.css */
-  gap: 0;
-}
-
-.journey-header,
-.journey-page main {
-  width: 100%;
-  max-width: 1040px;
-  margin: 0 auto;
-}
-
-.journey-page main {
-  flex: 1;
-}
-
-.journey-header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem 1.5rem;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.journey-header a {
-  color: var(--text);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.journey-header a:hover {
-  color: var(--accent);
-}
-
-.site-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.75rem;
-}
-
-.site-nav a {
-  color: var(--muted);
-  font-weight: 400;
-}
-
-/* ----- My Thoughts drop-down (a <details> element) ----- */
-
-  /* On phones, position the menus against the whole nav row instead of
-     their own link, so every menu lines up with the left edge and fits. */
-  .site-nav {
-    position: relative;
-  }
-
-  .nav-menu {
-    position: static;
-  }
-
-  .nav-menu ul {
-    left: 0;
-    right: auto;
-  }
-
-
-.nav-menu ul {
-  position: absolute;
-  top: calc(100% + 0.75rem);
-  right: 0;
-  z-index: 10;           /* sits above the page content */
-  width: 18rem;
-  margin: 0;
-  padding: 0.5rem 0;
-  list-style: none;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 0.75rem;
-}
-
-.nav-menu li a {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding: 0.6rem 1rem;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.nav-menu li a:hover {
-  background: var(--surface);
-}
-
-.nav-menu .label {
-  margin: 0;
-  font-size: 0.7rem;
-}
-
-.nav-menu .nav-menu-all {
-  border-top: 1px solid var(--line);
-  color: var(--accent);
-}
-
-/* Hides an element visually while keeping it available to screen readers.
-   (display: none would hide it from screen readers too.) */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
 
 /* Each page: no background, just space above and below. */
 .journey-page-item {
@@ -514,12 +390,6 @@
 .journey-next:disabled {
   opacity: 0.3;
   cursor: default;
-}
-
-.journey-nav button:focus-visible,
-.journey-page a:focus-visible {
-  outline: 2px solid var(--heading);
-  outline-offset: 3px;
 }
 
 /* The year strip */
