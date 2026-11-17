@@ -453,14 +453,53 @@
   }
 }
 
-/* Phones: single column, less space, year strip above the arrows. */
+ /* Intro: both options become full-width buttons, one above the other. */
+  .intro-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .intro-actions a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+
+  .intro-actions a:not(.button) {
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+
+  /* More page: contact links become full-width buttons, Email filled in pink as the main action. */
+  .contact-links {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .contact-links li:first-child a {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+
 @media (max-width: 700px) {
   .role,
   .more-columns {
-    grid-template-columns: 1fr;
-  }
-
-  .achievement {
     grid-template-columns: 1fr;
   }
 
@@ -468,7 +507,53 @@
     padding: 3rem 0.25rem 2.5rem;
   }
 
-   .journey-nav {
+  /* Intro: both options become full-width buttons, one above the other. */
+  .intro-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .intro-actions a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 999px;
+    text-decoration: none;
+  }
+
+  .intro-actions a:not(.button) {
+    border: 1px solid var(--line);
+    color: var(--text);
+  }
+
+  /* More page: contact links become full-width buttons, Email filled in pink as the main action. */
+  .contact-links {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .contact-links li:first-child a {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+
+  /* On phones: one slim row, arrows either side of a year strip that scrolls
+     sideways (journey.js keeps the current year in view). */
+  .journey-nav {
     gap: 0.5rem;
     padding-top: 0.5rem;
     padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
@@ -479,9 +564,6 @@
     scrollbar-width: none;         /* hides the scrollbar; swiping still scrolls it */
   }
 }
-
-/* Highlighted text: key figures and phrases in pink, instead of the browser's
-   default yellow highlighter. */
 mark {
   background: none;
   color: var(--accent);
