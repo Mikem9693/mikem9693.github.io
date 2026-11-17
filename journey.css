@@ -193,24 +193,12 @@
 }
 
 /* The key achievement: a big number beside its explanation, under a thin line. */
+/* The key achievement: a thin line, a label, a heading and the sentence, with its figure in pink. */
+
 .achievement {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem 2rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--line);
 }
-
-.achievement-stat {
-  margin: 0;
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  white-space: nowrap;
-  color: var(--accent);
-}
-
 .achievement .label {
   margin: 0 0 0.25rem;
 }
@@ -330,6 +318,7 @@
   overflow: hidden;      /* hides the pages to the left and right... */
   overflow: clip;        /* ...and stops the browser scrolling it sideways. */
   transition: height 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+    touch-action: pan-y pinch-zoom; /* the browser handles scrolling and zooming; sideways swipes are ours */
 }
 
 .is-book .journey-track {
@@ -480,4 +469,12 @@
     order: -1;
     flex-basis: 100%;
   }
+}
+
+/* Highlighted text: key figures and phrases in pink, instead of the browser's
+   default yellow highlighter. */
+mark {
+  background: none;
+  color: var(--accent);
+  font-weight: 500;
 }
