@@ -340,8 +340,16 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  padding: 1.25rem 0 2rem;
+  padding: 1rem 0;
   border-top: 1px solid var(--line);
+
+  /* Sticky: the bar stays pinned to the bottom of the screen while you scroll
+     a long page, then settles into its normal place at the end. */
+  position: sticky;
+  bottom: 0;
+  z-index: 5;                      /* sits above the page content as it scrolls past */
+  background: var(--bg);           /* solid, so text doesn't show through */
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom)); /* clears the iPhone home bar */
 }
 
 /* "display: flex" above would override the hidden attribute, so this puts it back. */
@@ -460,14 +468,15 @@
     padding: 3rem 0.25rem 2.5rem;
   }
 
-  .journey-nav {
-    flex-wrap: wrap;
-    justify-content: space-between;
+   .journey-nav {
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
   }
 
   .journey-spine {
-    order: -1;
-    flex-basis: 100%;
+    justify-content: flex-start;
+    scrollbar-width: none;         /* hides the scrollbar; swiping still scrolls it */
   }
 }
 
