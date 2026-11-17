@@ -162,3 +162,55 @@ document.addEventListener('keydown', (event) => {
     }
   });
 });
+
+// ----- 8. Swipe to turn the page on touch screens -----
+// The track follows your finger as you drag, then turns the page if you've
+// dragged far enough, or springs back if you haven't.
+let startX = 0;
+let startY = 0;
+let direction = null; // 'sideways' (a page turn) or 'vertical' (a scroll), decided as you move
+
+viewport.addEventListener('touchstart', (event) => {
+  startX = event.touches[0].clientX;
+  startY = event.touches[0].clientY;
+  direction = null;
+}, { passive: true });
+
+viewport.addEventListener('touchmove', (event) => {
+  let dx = event.touches[0].clientX - startX;
+  const dy = event.touches[0].clientY - startY;
+
+  // Wait until the finger has moved 10px, then decide: mostly sideways is a
+  // page turn, mostly up or down is a normal scroll, which we leave alone.
+  if (direction === null && Math.abs(dx) + Math.abs(dy) > 10) {
+    direction = Math.abs(dx) > Math.abs(dy) ? 'sideways' : 'vertical';
+    if (direction === 'sideways') track.style.transition = 'none'; // follow the finger exactly
+  }
+
+  if (direction === 'sideways') {
+    // On the first and last pages there's nothing to turn to, so the page
+    // only moves a third as far: it feels like the end of the book.
+    if ((current === 0 && dx > 0) || (current === pages.length - 1 && dx < 0)) dx = dx / 3;
+    track.style.transform = `translateX(calc(-${current * 100}% + ${dx}px))`;
+  }
+}, { passive: true });
+
+viewport.addEventListener('touchend', (event) => {
+  if (direction !== 'sideways') return;
+  const dx = event.changedTouches[0].clientX - startX;
+  track.style.transition = ''; // hand the animation back to the CSS
+
+  if (dx < -50) {
+    goTo(current + 1);         // dragged left far enough: next page
+  } else if (dx > 50) {
+    goTo(current - 1);         // dragged right far enough: previous page
+  } else {
+    track.style.transform = `translateX(-${current * 100}%)`; // not far enough: spring back
+  }
+});
+
+// If the system interrupts a swipe (an incoming call, say), put the page back.
+viewport.addEventListener('touchcancel', () => {
+  track.style.transition = '';
+  track.style.transform = `translateX(-${current * 100}%)`;
+});
