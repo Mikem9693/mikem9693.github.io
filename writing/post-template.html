@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 1. The title shown in the browser tab and in search results. -->
+  <title>[Post title] | Mike Morris</title>
+  <!-- 2. One or two sentences. This is what LinkedIn and search engines show under your link. -->
+  <meta name="description" content="[One or two sentences that sell the post.]">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="article-page post">
+  <!-- Shared header: /js/site.js builds it from /js/site-data.js. The name link only shows if JavaScript fails. -->
+  <div id="site-header"><a class="journey-name" href="/">Mike Morris</a></div>
+  <script src="/js/site-data.js"></script>
+  <script src="/js/site.js"></script>
+  <script src="/js/menu.js"></script>
+</head>
+<!--
+  HOW TO PUBLISH THIS POST
+  1. Save a copy of this file in writing/ with a lowercase-hyphenated name, e.g. why-raid-logs-fail.html
+  2. Replace everything in [square brackets] and delete the example blocks you don't need.
+  3. Add an entry to the top of POSTS in /js/site-data.js (title, url, date, category, standfirst).
+  4. Check it in Live Server, then commit and push.
+-->
+<body class="article-page post">
+  <!-- Shared header: /js/site.js builds it from /js/site-data.js. Don't edit it here. -->
+  <div id="site-header"><a class="journey-name" href="/">Mike Morris</a></div>
+  <script src="/js/site-data.js"></script>
+  <script src="/js/site.js"></script>
+
+  <main>
+    <article>
+      <!-- 3. Category (Thinkpiece, Delivery or Learning log), date in both formats, and reading time. -->
+      <p class="label">[Category] · <time datetime="[YYYY-MM-DD]">[DD Mon YYYY]</time> · [X] min read</p>
+      <!-- 4. The headline. Use the same wording as the <title> and site-data.js. -->
+      <h1>[Post title]</h1>
+      <!-- 5. The standfirst: one sentence that pulls the reader in. Copy it into site-data.js too. -->
+      <p class="standfirst">[Standfirst.]</p>
+
+      <p>[Opening paragraph.]</p>
+
+      <!-- EXAMPLE: short list shown in two columns -->
+      <ul class="two-columns">
+        <li>[Point]</li>
+        <li>[Point]</li>
+        <li>[Point]</li>
+        <li>[Point]</li>
+      </ul>
+
+      <h2>[Subheading]</h2>
+
+      <p>[Paragraph.]</p>
+
+      <!-- EXAMPLE: pull quote -->
+      <aside class="callout">
+        <p><i>[A line worth pulling out.]</i></p>
+      </aside>
+
+      <!-- EXAMPLE: list with a bold lead-in on each point -->
+      <ul>
+        <li><strong>[Lead-in.]</strong> [Explanation.]</li>
+        <li><strong>[Lead-in.]</strong> [Explanation.]</li>
+      </ul>
+
+      <!-- EXAMPLE: figure. Put images in /images/ and always write alt text. -->
+      <figure>
+        <img src="/images/[file-name].png" alt="[What the image shows]">
+        <figcaption>[Caption.]</figcaption>
+      </figure>
+
+      <h2>Further reading</h2>
+
+      <h3>[Group heading]</h3>
+      <ul>
+        <li><a href="[https://...]">[Author or publisher, Title]</a></li>
+      </ul>
+
+      <footer class="post-footer">
+        <p><a href="/writing/">← All posts</a></p>
+      </footer>
+    </article>
+  </main>
+
+  <script src="/js/menu.js"></script>
+</body>
+</html>

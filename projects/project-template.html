@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 1. The title shown in the browser tab and in search results. -->
+  <title>[Project name] | Mike Morris</title>
+  <!-- 2. One or two sentences. This is what LinkedIn and search engines show under your link. -->
+  <meta name="description" content="[One or two sentences: what you built and why it matters.]">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<!--
+  HOW TO PUBLISH THIS PROJECT
+  1. Save a copy of this file in projects/ with a lowercase-hyphenated name, e.g. power-bi-hub.html
+  2. Replace everything in [square brackets], including the <title> and description above.
+     Delete the example blocks you don't need.
+  3. Add an entry to PROJECTS in /js/site-data.js (title, url, tags, summary).
+  4. Check it in Live Server, then commit and push.
+
+  Still in progress? Use "What I'm building", "Intended outcome" and "What I'm learning",
+  and change them to "What I built", "Outcome" and "What I learned" when it's finished.
+-->
+<body class="article-page post">
+  <!-- Shared header: /js/site.js builds it from /js/site-data.js. Don't edit it here. -->
+  <div id="site-header"><a class="journey-name" href="/">Mike Morris</a></div>
+  <script src="/js/site-data.js"></script>
+  <script src="/js/site.js"></script>
+  <script src="/js/menu.js"></script>
+
+  <main>
+    <article>
+      <!-- 3. Use the same tags as in site-data.js, so the menu and the page match. -->
+      <p class="label">Project · [Tool · Tool]</p>
+      <!-- 4. The project name. Use the same wording as the <title> and site-data.js. -->
+      <h1>[Project name]</h1>
+      <!-- 5. Optional: one sentence summing up the project. Can be the same as the summary in site-data.js. -->
+      <p class="standfirst">[One-sentence summary.]</p>
+
+      <section>
+        <h2>The challenge</h2>
+        <p>[What problem existed, and why it was worth solving.]</p>
+      </section>
+
+      <section>
+        <h2>My role</h2>
+        <p>[What you were responsible for, how you ran it, and what you decided.]</p>
+      </section>
+
+      <section>
+        <h2>What I built</h2>
+        <p>[One-line description of the thing itself.]</p>
+        <ul>
+          <li>[Feature or component]</li>
+          <li>[Feature or component]</li>
+        </ul>
+
+        <!-- EXAMPLE: callout for a key insight or decision -->
+        <aside class="callout">
+          <p>[A decision or lesson worth pulling out.]</p>
+        </aside>
+
+        <!-- EXAMPLE: screenshot. Put images in /images/ and always write alt text.
+             Check screenshots for personal data or network details before publishing. -->
+        <figure>
+          <img src="/images/[file-name].png" alt="[What the image shows]">
+          <figcaption>[Caption.]</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Outcome</h2>
+        <!-- Measured results where you can: numbers, before and after, time saved. -->
+        <ul>
+          <li>[Result]</li>
+          <li>[Result]</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What I learned</h2>
+        <dl class="highlights">
+          <dt>[Topic]</dt>
+          <dd>[What you learned and how you'll use it.]</dd>
+          <dt>[Topic]</dt>
+          <dd>[What you learned and how you'll use it.]</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2>Next steps</h2>
+        <ul>
+          <li>[What you'll do next]</li>
+        </ul>
+      </section>
+
+      <!-- EXAMPLE: links to the code or the original project -->
+      <aside class="callout">
+        <p><a href="[https://github.com/Mikem9693/repo-name]">[See the code on GitHub]</a></p>
+      </aside>
+
+      <footer class="post-footer">
+        <p><a href="/projects/">← All projects</a></p>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
