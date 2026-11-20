@@ -71,6 +71,7 @@ function buildHeader() {
           <li><a class="nav-menu-all" href="/projects/">All projects →</a></li>
         </ul>
       </details>
+      <a href="mailto:Mikem9693@gmail.com">Email</a>
       <a href="https://github.com/Mikem9693">GitHub ↗</a>
       <a href="https://www.linkedin.com/in/mike-morris-5a3879b5/">LinkedIn ↗</a>
     </nav>
