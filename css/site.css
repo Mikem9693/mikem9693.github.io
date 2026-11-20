@@ -350,3 +350,14 @@ summary:focus-visible {
 .two-columns li {
   break-inside: avoid;   /* never split one item across two columns */
 }
+
+/* Optional: crops an image to 16:9. Use on photos, not screenshots. */
+.project-image {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;     /* fills the shape without stretching */
+}
+
+/* A thin border on figure images, so screenshots don't blend into the background. */
+.post figure img {
+  border: 1px solid var(--line);
+}

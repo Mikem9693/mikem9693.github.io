@@ -24,10 +24,10 @@ const POSTS = [
 
 const PROJECTS = [
   {
-    title: "Red Alert Browser Port",
-    url: "/projects/red-alert-browser.html",
+    title: "Classic RTS - Red Alert 1 in browser",
+    url: "/projects/classic-rts.html",
     tags: "WebAssembly · AI delivery",
-    summary: "TODO: one line on what it is and why it matters."
+    summary: "Making Red Alert 1 playable on browser"
   },
   {
     title: "Job Search Automation",

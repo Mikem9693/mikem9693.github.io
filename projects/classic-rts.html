@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- 1. Porting Red Alert (1996) into a browser friendly game -->
-  <title>Classic RTS (Red Alert 1 in browser) | Mike Morris</title>
+  <title>Classic RTS: Red Alert 1 in browser | Mike Morris</title>
   <!-- 2. One or two sentences. This is what LinkedIn and search engines show under your link. -->
   <meta name="description" content="[One or two sentences: what you built and why it matters.]">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -34,79 +34,144 @@
       <!-- 3. Use the same tags as in site-data.js, so the menu and the page match. -->
       <p class="label">Project · [WebAssembly · Agentic AI]</p>
       <!-- 4. The project name. Use the same wording as the <title> and site-data.js. -->
-      <h1>Classic RTS (Red Alert 1 in browser)</h1>
+      <h1>Classic RTS: Red Alert 1 in browser</h1>
       <!-- 5. Optional: one sentence summing up the project. Can be the same as the summary in site-data.js. -->
-      <p class="standfirst">[One-sentence summary.]</p>
+      <p class="standfirst">An unofficial browser version of Red Alert. <a href=https://classic-rts.pages.dev/">Play it here</a></p>
 
       <section>
         <h2>The Project</h2>
-        <p>Red Alert is a game I remember fondly from my childhood, knowing that EA had released it as freeware in 2008 made it an ideal choice for a learning project. </p>
-        <p>Browser games are a popular topic at the moment, and several decompiled games rebuilt to run in the browser have gained large followings. I found two sites that already offered Red Alert. The first used DOS emulation. Even though my laptop is effectively a supercomputer next to the PCs the game was released on, the game stuttered so badly it was close to unplayable. The second site ran the game in the browser, but switching away from it at any point froze the whole tab.</p>
-        <p>Because EA had released the game’s source code, it could be compiled directly for the web. By testing the second site one variable at a time, I traced the frozen tab to the way the original code was written. It assumes it controls the whole machine and waits inside its own loops, never handing control back to the browser. That gave me the clearest test of whether my project was viable. Switching tabs, resizing the window or opening developer tools must not freeze the game, and that became one of my acceptance tests.</p>
-        <p>freeze the game, and that became one of my acceptance tests.
-As the game’s source code was released, it was freely available to be compiled directly for the web.Through testing I traced the frozen tab to the root cause in the way the original code was written. The game assumes control of the entire machine and waiting inside its own loops, never handing control back to the browser.The became the first test of viability for the project. The game must run even with focus loss such as switching tabs, resizing the window or opening developer tools.</p>
+        <p>Red Alert is a game I remember fondly from my childhood, EA releasing it as freeware in 2008 made it an ideal learning project. </p>
+        <p>Browser versions of Red Alert existed already,so I tested two. The first used DOS emulation and stuttered badly. The second ran the engine in browser directly but any switch away from the game froze the tab. I traced the freeze to the original code which assumed control of the whole machine and waits inside its own loops, never handing control back to the browser. </p>
+        <p>This presented the fist test of viability and became the first acceptance test: switching tabs, resizing the window or opening dev tools must not freeze the game.</p>
       </section>
+
+<figure class="project-figure">
+  <img
+    src="/images/classic-rts-loading-page.webp"
+    alt=""
+    width="1200"
+    height="675"
+    loading="lazy">
+  <figcaption>Classic Red Alert start screen</figcaption>
+</figure>
 
       <section>
         <h2>My role</h2>
-        <p>I ran this as product owner and delivery lead, with an AI coding assistant (Claude Code) as the engineer. I split the work into phases with clear gates. Each ticket had a goal, files in scope, constraints and acceptance tests. I reviewed every plan before approving it and every diff before committing it. If there was something I didn’t understand, I researched or asked a separate AI chat to explain remaining true to the goal of learning not just letting AI develop. I decided what was in or out of scope. Licensing, security, privacy, hosting and release timing were my decisions, and I recorded the reasoning for each.</p>
-        <p>I managed the release myself, setting up hosting accounts, uploading game data and deploying each version with tagging in Git. Every version links to its exact source code.</p>
-        <p>I learned the technical side alongside delivery; Linux toolchain, Git, C++ build systems WebAssembly and the basics of cloud hosting and web security.</p>
+        <p>I ran this as product owner and delivery lead, with an AI coding assistant (Claude Code) as the engineer. I split the work into phases with clear gates. Each ticket had a goal, files in scope, constraints and acceptance tests. I reviewed every plan before approving it and every diff before committing it. When there was something I didn't understand, I researched or asked a separate AI chat to explain it. The aim was to learn, not just letting AI develop.</p>
+        <p>Licensing, security, privacy, hosting and release timing were my decisions, and I recorded the reasoning for each. I also ran the release: setting up hosting, uploading game data and deploying each version, tagged in Git so it links to its exact source code.</p>
       </section>
+
+              <aside class="callout">
+          <p>Using Fable 5.2 to instruct agents using less powerful models to complete development work reduced costs by around 50% with no visible drop in quality </p>
+        </aside>
 
       <section>
         <h2>What I built</h2>
         <p>A working version of Red Alert built from open-source Vanilla Conquer engine, compiled to WebAssembly with Emscripten</p>
-        <d1 class="hightlights"
-          <dt>Skirmish</dt>
-          <dd>Play against the AI in a one off battle. </dd>
-        <dt>Multiplayer</dt>
-        <dd>Private online multiplayer rooms in desktop browsers from a shared link</dd>
-          
+        <dl class="highlights">
+        <dt>Skirmish & private multiplayer</dt>
+        <dd>Play against the AI in a one off battle, or play against friends in a private room from a shared link. Browser connections (WebSockets) replaced the games single networking interface. </dd>
+        <dt>94% smaller download</dt>
+        <dd>Game data reduced from 480Mb to 28Mb skirmish only pack.</dd>      
+        <dt>No freezing</dt>
+        <dd>Emscripten’s Asyncify feature makes the game’s waits hand control back to the browser. Switching tabs, resizing or opening developer tools no longer freezes the game.</dd>
+        <dt>Security and privacy</dt>
+        <dd>Strict Content Security Policy, a relay that only accepts the real site and limits connections and message sizes, and cookieless analytics that store no personal data.</dd>
+        <dt>Small footprint</dt>
+        <dd>Changes kept to a minimum with only 15 file changes and 798 lines added</dd>
+      </dl>  
         </ul>
 
-        <!-- EXAMPLE: callout for a key insight or decision -->
-        <aside class="callout">
-          <p>[A decision or lesson worth pulling out.]</p>
-        </aside>
+<figure class="project-figure">
+  <img
+    src="/images/classic-rts-multiplayer-rooms.webp"
+    alt="Private multiplayer rooms"
+    width="1200"
+    height="675"
+    loading="lazy">
+  <figcaption>Private multiplayer rooms</figcaption>
+</figure>
 
-        <!-- EXAMPLE: screenshot. Put images in /images/ and always write alt text.
-             Check screenshots for personal data or network details before publishing. -->
-        <figure>
-          <img src="/images/[file-name].png" alt="[What the image shows]">
-          <figcaption>[Caption.]</figcaption>
-        </figure>
+
+      <section>
+        <h2>Where review matted</h2>
+        <dl class="highlights">
+          <dt>Choosing the project</dt>
+          <dd>I rejected my first idea, Red Alert 2, because it failed on feasibility, licensing and verifiability.</dd>
+          <dt>A 1996 bug</dt>
+          <dd>A game crashing bug was discovered when testing. This was identified as a result of a unit being used after being destroyed by an exploding crate. A two line fix was applied with no reoccurrences</dd>
+          <dt>Security gap</dt>
+          <dd>Reviewing the relay's deployment plan the AI flagged that the per-address limit trusted a fakeable. I made the fix a condition of approval</dd>
+        </dl>
       </section>
 
+
+      <figure class="project-figure">
+  <img
+    src="/images/Classic-rts-game1.webp"
+    alt="Skirmish playing in Browser"
+    width="1200"
+    height="675"
+    loading="lazy">
+  <figcaption>Skirmish against AI</figcaption>
+</figure>
+      
+      </section>
       <section>
         <h2>Outcome</h2>
         <!-- Measured results where you can: numbers, before and after, time saved. -->
-        <ul>
-          <li>[Result]</li>
-          <li>[Result]</li>
-        </ul>
+        <dl class="highlights">
+          <dt>Publicly playable</dt>
+          <dd>Skirmish and private multiplayer at classic-rts.pages.dev.</dd>
+          <dt>Ahead of plan</dt>
+          <dd>Intial plan outlined for 15 weeks. First release within six days of project start</dd>
+          <dt>Tested</dt>
+          <dd>48 automated relay tests passing at release, plus browser checks of every security policy.</dd>
+          <dt>A complete audit trail</dt>
+          <dd>Every phase recorded in commits, tags, a changelog and session notes, including what the AI got wrong and how it was caught.</dd>
+          <dt>Troubleshooting</dt>
+          <dd>Some instances resulted in the game crashing after deployment of MCV and remaining frozen until connection dropped. This was identified as an issue with the relay server being classified as a trial account. This caused server to shut down after around five active minutes.</dd>
+          </dl>
       </section>
+
+   <figure class="project-figure">
+  <img
+    src="/images/classic-rts-multiplayer-battle.webp"
+    alt="Multiplayer game showing a battle between two players"
+    width="1200"
+    height="675"
+    loading="lazy">
+  <figcaption>Multiplayer in action</figcaption>
+</figure>
+
 
       <section>
         <h2>What I learned</h2>
         <dl class="highlights">
-          <dt>[Topic]</dt>
-          <dd>[What you learned and how you'll use it.]</dd>
-          <dt>[Topic]</dt>
-          <dd>[What you learned and how you'll use it.]</dd>
+          <dt>Managing AI delivery</dt>
+          <dd>Writing tickets an AI can execute well, using plan-first workflows, reviewing diffs instead of trusting output, and matching model and cost to task difficulty.</dd>
+          <dt>Delivery discipline with AI</dt>
+          <dd>Phase gates; change control when an assumption proves wrong; isolating variables when diagnosing problems; regression testing; and structuring development to stay within usage limits.</dd>
+          <dt>Technical foundations</dt>
+          <dd>Linux and WSL; Git workflows, including branches, merging diverged histories, tags and releases; CMake and C++ builds; WebAssembly and the browser event loop.</dd>
+          <dt>Responsible open source</dt>
+          <dd>GPL obligations, keeping copyrighted assets out of public code, trademark limits, privacy by design, and the etiquette of contributing upstream.</dd>
+          <dt>Agentic AI</dt>
+          <d>Understanding when and how to use more powerful models and how to instruct to limit token spend.</d>
         </dl>
       </section>
 
       <section>
         <h2>Next steps</h2>
         <ul>
-          <li>[What you'll do next]</li>
+          <li>Monitoring usage and spend</li>
+          <li>Explore interest and feasibility for adding single player campaigns </li>
         </ul>
       </section>
 
       <!-- EXAMPLE: links to the code or the original project -->
       <aside class="callout">
-        <p><a href="[https://github.com/Mikem9693/repo-name]">[See the code on GitHub]</a></p>
+        <p><a href="https://github.com/Mikem9693/Vanilla-Conquer">See the code on GitHub</a></p>
       </aside>
 
       <footer class="post-footer">
