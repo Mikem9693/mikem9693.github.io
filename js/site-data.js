@@ -33,13 +33,13 @@ const PROJECTS = [
     title: "Job Search Automation",
     url: "/projects/job-search-automation.html",
     tags: "n8n · AI workflows",
-    summary: "TODO: one line on what it is and why it matters."
+    summary: "Automating my job search using AI."
   },
   {
     title: "Records Automation",
     url: "/projects/records-automation.html",
     tags: "Apps Script · Google Sheets",
-    summary: "TODO: one line on what it is and why it matters."
+    summary: "Keeping up to date records without manual intervention"
   },
 
   /* Pi-hole wasn't in your menu, so it's switched off here.
