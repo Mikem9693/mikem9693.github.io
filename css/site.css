@@ -154,8 +154,13 @@ summary:focus-visible {
    ========================================================== */
 
 .article-page article {
-  max-width: 42rem;      /* about 70 characters a line: comfortable to read */
   padding: 4rem 0 5rem;
+}
+
+.article-page article p,
+.article-page article li,
+.article-page article dd {
+  max-width: 50rem;      /* full-width layout, but text lines stay readable */
 }
 
 .article-page h1 {
@@ -360,4 +365,9 @@ summary:focus-visible {
 /* A thin border on figure images, so screenshots don't blend into the background. */
 .post figure img {
   border: 1px solid var(--line);
+}
+
+/* A heading at the top of a section already has the section's spacing above it. */
+.post section > h2:first-child {
+  margin-top: 0;
 }
